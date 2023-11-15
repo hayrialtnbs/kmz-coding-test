@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 export default function App(props) {
   const [state, dispatch] = useReducer(
     (prevState, action) => {
-      switch (action) {
+      switch (action.type) {
         case 'SIGN_IN':
           return {
             ...prevState,
@@ -62,13 +62,13 @@ export default function App(props) {
               gestureDirection: 'horizontal',
               headerShown: false,
             }}>
-            {state.userToken == null ? (
-              <Stack.Screen name={'AUTH'} component={AuthNavigator} />
-            ) : (
+            {state.userToken ? (
               <Stack.Screen
                 name={'StackNavigator'}
                 component={StackNavigator}
               />
+            ) : (
+              <Stack.Screen name={'AUTH'} component={AuthNavigator} />
             )}
           </Stack.Navigator>
         </ApplicationProvider>

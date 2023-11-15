@@ -1,0 +1,1 @@
+export const CATEGORY_LIST_URL = 'api/v5/ad/product/categories';

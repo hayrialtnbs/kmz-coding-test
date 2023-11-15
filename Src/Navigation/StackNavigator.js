@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { CATEGORY } from '../Modules/Category/Utils/Routes';
+import {CATEGORY, SUBCATEGORY} from '../Modules/Category/Utils/Routes';
 import Category from '../Modules/Category/Screens/Category';
-import { AppColors } from '../Modules/Global/Utils/AppColors';
+import SubCategory from '../Modules/Category/Screens/SubCategory';
+import {AppColors} from '../Modules/Global/Utils/AppColors';
 
 const Stack = createNativeStackNavigator();
 export const StackNavigator = props => {
@@ -17,10 +18,8 @@ export const StackNavigator = props => {
         headerBackTitleStyle: {fontSize: 18},
         headerTitleAlign: 'center',
       }}>
-      <Stack.Screen
-        name={CATEGORY}
-        component={Category}
-      />
+      <Stack.Screen name={CATEGORY} component={Category} />
+      <Stack.Screen name={SUBCATEGORY} component={SubCategory} />
     </Stack.Navigator>
   );
 };
