@@ -1,0 +1,1 @@
+export const TOKEN_URL = 'api/v5/sf/auth/login';
