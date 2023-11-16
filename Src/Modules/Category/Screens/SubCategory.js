@@ -5,6 +5,7 @@ import {AppColors} from '../../Global/Utils/AppColors';
 import {useNavigation} from '@react-navigation/native';
 import CategoryStore from '../Store';
 import SubCategoryCard from '../Components/SubCategoryCard.component';
+import { observer } from 'mobx-react';
 const SubCategory = props => {
   const item = props?.route?.params?.item;
   const navigation = useNavigation();
@@ -20,13 +21,12 @@ const SubCategory = props => {
     <SafeAreaView
     style={{
       flex: 1,
-      backgroundColor: AppColors.WHITE,
+      backgroundColor: '#ececec',
     }}>
       <FlatList
         numColumns={2}
         keyExtractor={item => item.id}
         data={CategoryStore.SubCategoryList}
-        // ListHeaderComponent={renderHeaderComponent()}
         renderItem={({item, index}) => (
           <SubCategoryCard item={item} {...props} />
         )}
@@ -34,4 +34,4 @@ const SubCategory = props => {
   </SafeAreaView>
   );
 };
-export default SubCategory;
+export default observer(SubCategory);

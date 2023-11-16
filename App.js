@@ -14,6 +14,7 @@ import {SIGNIN} from './Src/Modules/Auth/Utils/Routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthStore from './Src/Modules/Auth/Store';
 import {StackNavigator} from './Src/Navigation/StackNavigator';
+import MainNavigator from './Src/Navigation/MainNavigator';
 
 export const AuthContext = createContext();
 const Stack = createNativeStackNavigator();
@@ -64,8 +65,8 @@ export default function App(props) {
             }}>
             {state.userToken ? (
               <Stack.Screen
-                name={'StackNavigator'}
-                component={StackNavigator}
+                name={'MAINNAVIGATOR'}
+                component={MainNavigator}
               />
             ) : (
               <Stack.Screen name={'AUTH'} component={AuthNavigator} />

@@ -44,7 +44,7 @@ const Category = props => {
   };
   const renderHeaderComponent = () => {
     return (
-      <View style={{padding: 5, backgroundColor: AppColors.WHITE}}>
+      <View style={{padding: 5, backgroundColor: '#ececec'}}>
         <Input
           style={{
             borderRadius: 15,
@@ -76,7 +76,7 @@ const Category = props => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: AppColors.WHITE,
+        backgroundColor: '#ececec',
       }}>
       <Animated.View
         style={{
