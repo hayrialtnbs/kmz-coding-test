@@ -9,12 +9,9 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {AuthNavigator} from './Src/Navigation/AuthNavigator';
 import {AppColors} from './Src/Modules/Global/Utils/AppColors';
 import {IonIconsPack} from './Src/Assets/Icons/IonIconsPack';
-import SignIn from './Src/Modules/Auth/Screens/SignIn';
-import {SIGNIN} from './Src/Modules/Auth/Utils/Routes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthStore from './Src/Modules/Auth/Store';
-import {StackNavigator} from './Src/Navigation/StackNavigator';
-import MainNavigator from './Src/Navigation/MainNavigator';
+import {MainNavigator} from './Src/Navigation/MainNavigator';
 
 export const AuthContext = createContext();
 const Stack = createNativeStackNavigator();
@@ -63,10 +60,11 @@ export default function App(props) {
               gestureDirection: 'horizontal',
               headerShown: false,
             }}>
+              
             {state.userToken ? (
               <Stack.Screen
-                name={'MAINNAVIGATOR'}
-                component={MainNavigator}
+              name={'MAINNAVIGATOR'}
+              component={MainNavigator}
               />
             ) : (
               <Stack.Screen name={'AUTH'} component={AuthNavigator} />

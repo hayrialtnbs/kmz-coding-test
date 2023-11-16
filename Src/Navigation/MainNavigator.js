@@ -5,12 +5,8 @@ import {DrawerNavigator} from '../Navigation/DrawerNavigator';
 import {Menus, otherMenu} from './MainScreens';
 import {AppColors} from '../Modules/Global/Utils/AppColors';
 
-const Drawer = createDrawerNavigator();
 const MainStack = createNativeStackNavigator();
-const HeaderOptions = {
-  headerShown: true,
-};
- const MainNavigator = () => {
+export const MainNavigator = () => {
   return (
     <MainStack.Navigator
       screenOptions={{
@@ -25,7 +21,7 @@ const HeaderOptions = {
         },
       }}>
       <MainStack.Screen name={'BottomMenu'} component={DrawerNavigator} />
-      {/* {Menus.map((item, index) => {
+      {Menus.map((item, index) => {
         if (!item.children) {
           return (
             <MainStack.Screen
@@ -36,7 +32,6 @@ const HeaderOptions = {
               options={{
                 headerShown: true,
               }}
-
             />
           );
         } else {
@@ -51,14 +46,14 @@ const HeaderOptions = {
                   options={{
                     headerShown: true,
                   }}
-                />
+                />,
               );
             }
           }
           return arr;
         }
-      })} */}
-      {/* {otherMenu.map((item, index) => {
+      })}
+      {otherMenu.map((item, index) => {
         return (
           <MainStack.Screen
             key={index}
@@ -70,8 +65,7 @@ const HeaderOptions = {
             }}
           />
         );
-      })} */}
+      })}
     </MainStack.Navigator>
   );
 };
-export default MainNavigator;
