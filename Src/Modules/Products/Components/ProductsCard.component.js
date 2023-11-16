@@ -5,9 +5,11 @@ import {AppColors} from '../../Global/Utils/AppColors';
 import {useNavigation} from '@react-navigation/native';
 import {SUBCATEGORY} from '../Utils/Routes';
 import {setHeight, setWidth} from '../../Global/Utils/Functions';
-import { PRODUCTS } from '../../Products/Utils/Routes';
+import {PRODUCTS} from '../../Products/Utils/Routes';
+import {observer} from 'mobx-react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const SubCategoryCard = ({props, item}) => {
+const ProductsCard = ({props, item}) => {
   const navigation = useNavigation();
   return (
     <View
@@ -28,36 +30,54 @@ const SubCategoryCard = ({props, item}) => {
           shadowRadius: 2.22,
           elevation: 3,
           backgroundColor: AppColors.WHITE,
-          height: setHeight(25),
-        }}
-        onPress={()=>{
-          navigation.navigate(PRODUCTS,{
-            item:item
-          });
-        }}
-        >
+          height: setHeight(27),
+        }}>
         <View style={{alignItems: 'center'}}>
           <Image
             style={{
               width: 150,
               height: 150,
+              resizeMode:'center'
             }}
             source={{
-              uri: item.imagePath.imagePath,
+              uri: item.productImages[0].imagePath,
             }}
           />
           <Text
             style={{
               color: AppColors.MIDNIGHTBLUE,
               fontWeight: '600',
+              fontSize: 15,
               textAlign: 'center',
-              fontSize: 17,
             }}>
-            {item.categoryName}
+            {item.stockName}
           </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginTop: 10,
+          }}>
+          <Text>
+            {item.priceVat} {''}
+            {item.currency}
+          </Text>
+          <View
+            style={{
+              backgroundColor: AppColors.PRIMARY,
+              borderRadius:20
+            }}>
+            <Ionicons
+              name={'add-circle-outline'}
+              size={30}
+              color={AppColors.WHITE}
+            />
+          </View>
         </View>
       </Card>
     </View>
   );
 };
-export default SubCategoryCard;
+export default observer(ProductsCard);

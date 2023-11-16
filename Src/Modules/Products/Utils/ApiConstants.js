@@ -1,0 +1,1 @@
+export const PRODUCTS_LIST_URL = 'api/v5/sf/product/category_products';

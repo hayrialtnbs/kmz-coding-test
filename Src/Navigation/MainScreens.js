@@ -1,6 +1,9 @@
 import Category from "../Modules/Category/Screens/Category";
-import { CATEGORY } from "../Modules/Category/Utils/Routes";
+import SubCategory from "../Modules/Category/Screens/SubCategory";
+import { CATEGORY, SUBCATEGORY } from "../Modules/Category/Utils/Routes";
 import * as Routes from "../Modules/Global/Utils/Routes";
+import Products from "../Modules/Products/Screens/Products";
+import { PRODUCTS } from "../Modules/Products/Utils/Routes";
 import Profil from "../Modules/User/Screens/Profil";
 import { PROFIL } from "../Modules/User/Utils/Routes";
 
@@ -93,11 +96,16 @@ Menus.forEach((item) => {
   }
 });
 export const otherMenu = [
-//   {
-//     title: YENIKASA,
-//     route: YENIKASA,
-//     component: KasaEkleme,
-//   },
+  {
+    title: SUBCATEGORY,
+    route: SUBCATEGORY,
+    component: SubCategory,
+  },
+  {
+    title: PRODUCTS,
+    route: PRODUCTS,
+    component: Products,
+  },
 ];
 
 export const loginMenu = [];
