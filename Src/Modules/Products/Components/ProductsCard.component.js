@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Card} from '@ui-kitten/components';
 import {AppColors} from '../../Global/Utils/AppColors';
 import {useNavigation} from '@react-navigation/native';
@@ -8,9 +8,17 @@ import {setHeight, setWidth} from '../../Global/Utils/Functions';
 import {PRODUCTS} from '../../Products/Utils/Routes';
 import {observer} from 'mobx-react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ProductStore from '../Store';
+
 
 const ProductsCard = ({props, item}) => {
   const navigation = useNavigation();
+  const [state,setState] = useState();
+  const postForm = async ()=>{
+    await ProductStore.addBasket(state)
+  }
+  useEffect(()=>{
+  },[])
   return (
     <View
       style={{
@@ -37,7 +45,7 @@ const ProductsCard = ({props, item}) => {
             style={{
               width: 150,
               height: 150,
-              resizeMode:'center'
+              resizeMode: 'center',
             }}
             source={{
               uri: item.productImages[0].imagePath,
@@ -64,17 +72,22 @@ const ProductsCard = ({props, item}) => {
             {item.priceVat} {''}
             {item.currency}
           </Text>
-          <View
+          <TouchableOpacity
+            activeOpacity={1}
             style={{
-              backgroundColor: AppColors.PRIMARY,
-              borderRadius:20
+              backgroundColor: AppColors.GRAY,
+              borderRadius: 20,
+            }}
+            onPress={() => {
+             postForm.bind(this),
+             setState(item.id)
             }}>
             <Ionicons
               name={'add-circle-outline'}
               size={30}
               color={AppColors.WHITE}
             />
-          </View>
+          </TouchableOpacity>
         </View>
       </Card>
     </View>

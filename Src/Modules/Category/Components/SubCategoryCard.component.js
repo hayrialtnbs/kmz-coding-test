@@ -43,7 +43,7 @@ const SubCategoryCard = ({props, item}) => {
               height: 150,
             }}
             source={{
-              uri: item.imagePath.imagePath,
+              uri: item?.imagePath?.imagePath,
             }}
           />
           <Text

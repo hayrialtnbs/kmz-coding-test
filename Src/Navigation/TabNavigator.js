@@ -8,8 +8,8 @@ import {CATEGORY} from '../Modules/Category/Utils/Routes';
 import Category from '../Modules/Category/Screens/Category';
 import {PROFIL} from '../Modules/User/Utils/Routes';
 import {DrawerActions} from '@react-navigation/native';
-import {SEPET} from '../Modules/Sepet/Utils/Routes';
-import Sepet from '../Modules/Sepet/Screens/Sepet';
+import Sepet from '../Modules/Products/Screens/Sepet';
+import {SEPET} from '../Modules/Products/Utils/Routes';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = props => {

@@ -1,1 +1,1 @@
-export const CATEGORY_LIST_URL = 'api/v5/ad/product/categories';
+export const CATEGORY_LIST_URL = 'api/v5/sf/product/categories';
