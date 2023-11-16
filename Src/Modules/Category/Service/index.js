@@ -9,7 +9,7 @@ export default class CategoryService {
     });
   }
   static async subCategoryListService(cateogryID) {
-    const url = `${CATEGORY_LIST_URL}${'?parentId='}${cateogryID}`;
+    const url = `${CATEGORY_LIST_URL}${'?selectedCategoryId='}${cateogryID}`;
     return await api.get(url, {
       headers: 'GUID: 24BE-DB0E-D75E-4060',
     });

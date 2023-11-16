@@ -14,6 +14,7 @@ import {observer} from 'mobx-react';
 import {Card, Icon, Input} from '@ui-kitten/components';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CategoryCard from '../Components/CategoryCard.component';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Category = props => {
   const [SlideInLeft, setSlideInLeft] = useState(new Animated.Value(0));

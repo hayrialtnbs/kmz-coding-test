@@ -10,7 +10,7 @@ const Sepet = props => {
   };
 
   useEffect(() => {
-    dataReq();
+    dataReq();  
   }, []);
   return (
     <SafeAreaView
@@ -18,12 +18,15 @@ const Sepet = props => {
         flex: 1,
         backgroundColor: '#ececec',
       }}>
-      <FlatList
+        <Text>
+          Sepet.js
+        </Text>
+      {/* <FlatList
         numColumns={2}
         keyExtractor={item => item.id}
         data={ProductStore.ProductsBasketList}
         renderItem={({item, index}) => <SepetCard item={item} {...props} />}
-      />
+      /> */}
     </SafeAreaView>
   );
 };

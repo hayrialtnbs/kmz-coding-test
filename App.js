@@ -12,18 +12,31 @@ import {IonIconsPack} from './Src/Assets/Icons/IonIconsPack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthStore from './Src/Modules/Auth/Store';
 import {MainNavigator} from './Src/Navigation/MainNavigator';
-
+import Splash from './Src/Modules/Splash/Screens/Splash.js';
+import AuthServices from './Src/Modules/Auth/Service';
 export const AuthContext = createContext();
 const Stack = createNativeStackNavigator();
 export default function App(props) {
   const [state, dispatch] = useReducer(
     (prevState, action) => {
       switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
         case 'SIGN_IN':
           return {
             ...prevState,
             isSignout: false,
             userToken: action.token,
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null,
           };
       }
     },
@@ -44,7 +57,23 @@ export default function App(props) {
     }),
     [],
   );
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const bootstrapAsync = async () => {
+      let userToken;
+      let userInfo;
+      try {
+        userToken = await AsyncStorage.getItem('@token');
+        userInfo = await AsyncStorage.getItem('@user_info');
+        await AuthStore.setUserInfo(JSON.parse(userInfo));
+      } catch (e) {
+      } finally {
+        console.log('FİNALLY');
+      }
+
+      dispatch({type: 'RESTORE_TOKEN', token: userToken});
+    };
+    bootstrapAsync();
+  }, []);
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
@@ -60,14 +89,12 @@ export default function App(props) {
               gestureDirection: 'horizontal',
               headerShown: false,
             }}>
-              
-            {state.userToken ? (
-              <Stack.Screen
-              name={'MAINNAVIGATOR'}
-              component={MainNavigator}
-              />
-            ) : (
+            {state.isLoading ? (
+              <Stack.Screen name={'Splash'} component={Splash} />
+            ) : state.userToken == null ? (
               <Stack.Screen name={'AUTH'} component={AuthNavigator} />
+            ) : (
+              <Stack.Screen name={'MAINNAVIGATOR'} component={MainNavigator} />
             )}
           </Stack.Navigator>
         </ApplicationProvider>

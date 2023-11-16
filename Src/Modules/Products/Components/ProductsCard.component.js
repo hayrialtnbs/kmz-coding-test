@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Card} from '@ui-kitten/components';
 import {AppColors} from '../../Global/Utils/AppColors';
@@ -9,16 +9,21 @@ import {PRODUCTS} from '../../Products/Utils/Routes';
 import {observer} from 'mobx-react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ProductStore from '../Store';
-
+import {FormBuilder} from 'react-reactive-form';
 
 const ProductsCard = ({props, item}) => {
   const navigation = useNavigation();
-  const [state,setState] = useState();
-  const postForm = async ()=>{
-    await ProductStore.addBasket(state)
-  }
-  useEffect(()=>{
-  },[])
+  const [state, setState] = useState();
+  const [count, setCount] = useState(0);
+
+  const form = FormBuilder.group({
+    productId: [state?.id],
+    amount: [count],
+  });
+  const postForm = async () => {
+    await ProductStore.addBasket(form.value);
+  };
+  useEffect(() => {}, []);
   return (
     <View
       style={{
@@ -75,12 +80,12 @@ const ProductsCard = ({props, item}) => {
           <TouchableOpacity
             activeOpacity={1}
             style={{
-              backgroundColor: AppColors.GRAY,
+              backgroundColor: AppColors.YELLOW,
               borderRadius: 20,
             }}
             onPress={() => {
-             postForm.bind(this),
-             setState(item.id)
+              postForm();
+              setState(item), setCount(count + 1);
             }}>
             <Ionicons
               name={'add-circle-outline'}

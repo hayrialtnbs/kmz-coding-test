@@ -27,7 +27,7 @@ class ProductStore {
         this.setProductsList(response.data.data);
       })
       .catch(error => {
-        console.log('İSTEK HATA CATEGORY', error);
+        console.log('İSTEK HATA productsList', error);
       });
   };
 
@@ -35,21 +35,21 @@ class ProductStore {
     this.setProductsBasketList([]);
     return await ProductService.productsBasketListService()
       .then(async response => {
-        this.setProductsBasketList(response.data.data);
+        this.setProductsBasketList(response.data);
+        console.log(response.data)
       })
       .catch(error => {
-        console.log('İSTEK HATA CATEGORY', error);
+        console.log('İSTEK HATA productsBasket', error);
       });
   };
 
   addBasket = async val => {
-    return await ProductService.addBasket(RequestValue)
+    return await ProductService.addBasketService(val)
       .then(response => {
-        setLoading(false);
         this.productsBasket();
       })
       .catch(error => {
-        setLoading(false);
+        console.log('HATa',error)
       });
   };
 }

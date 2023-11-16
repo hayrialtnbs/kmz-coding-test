@@ -9,8 +9,4 @@ export default class AuthServices {
     });
   }
 
-  static async getNewToken(value) {
-    const reqData = {refresh_token: value};
-    return await api.post(REFRESH_URL, reqData);
-  }
 }

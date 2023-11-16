@@ -14,8 +14,6 @@ class AuthStore {
     this.userInfo = userInfo;
   };
 
-  //Kullanıcı Verisi AsyncStorage kaydeder ki herseferinde login olmak zorunda kalmasın
-
   SetStoreData = async value => {
     try {
       await AsyncStorage.setItem('@user_info', JSON.stringify(value));
@@ -24,16 +22,6 @@ class AuthStore {
       console.log('KULLANICI VERISI KAYIT HATASI', err);
     }
   };
-  //Kullanıcı Verisi AsyncStorage dan siler logout oldugunda
-  removeStore = async () => {
-    const keys = ['@user_info', '@token'];
-    try {
-      await AsyncStorage.multiRemove(keys);
-    } catch (e) {
-      console.log('renove', e);
-    }
-  };
-
 
   Login = async user_info => {
     this.setUserInfo({});
@@ -46,5 +34,6 @@ class AuthStore {
         console.log('İSTEK HATA', error);
       });
   };
+  
 }
 export default new AuthStore();

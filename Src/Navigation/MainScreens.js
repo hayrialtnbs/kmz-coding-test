@@ -1,12 +1,11 @@
-import Category from "../Modules/Category/Screens/Category";
-import SubCategory from "../Modules/Category/Screens/SubCategory";
-import { CATEGORY, SUBCATEGORY } from "../Modules/Category/Utils/Routes";
-import * as Routes from "../Modules/Global/Utils/Routes";
-import Products from "../Modules/Products/Screens/Products";
-import { PRODUCTS } from "../Modules/Products/Utils/Routes";
-import Profil from "../Modules/User/Screens/Profil";
-import { PROFIL } from "../Modules/User/Utils/Routes";
-
+import Category from '../Modules/Category/Screens/Category';
+import SubCategory from '../Modules/Category/Screens/SubCategory';
+import {CATEGORY, SUBCATEGORY} from '../Modules/Category/Utils/Routes';
+import * as Routes from '../Modules/Global/Utils/Routes';
+import Products from '../Modules/Products/Screens/Products';
+import {PRODUCTS} from '../Modules/Products/Utils/Routes';
+import Profil from '../Modules/User/Screens/Profil';
+import {PROFIL} from '../Modules/User/Utils/Routes';
 
 /**
  * @param title required
@@ -17,59 +16,8 @@ import { PROFIL } from "../Modules/User/Utils/Routes";
  * @param slug required
  */
 
-
 //Drawer Menu Sayfaları
 Menus = [
-  // {
-  //   title: "Hesaplar",
-  //   icon: "wallet-outline",
-  //   pack: "meterial",
-  //   route: Routes.MENU,
-  //   children: [
-  //     {
-  //       title: KASALAR,
-  //       route: KASALAR,
-  //       icon: "safe-square-outline",
-  //       pack: "material",
-  //       component: Kasalar,
-  //     },
-  //     {
-  //       title: BANKAHESAPLARI,
-  //       route: BANKAHESAPLARI,
-  //       icon: "bank-outline",
-  //       pack: "material",
-  //       component: BankaHesaplari,
-  //     },
-  //     {
-  //       title: POSHESAPLAR,
-  //       route: POSHESAPLAR,
-  //       icon: "credit-card-scan-outline",
-  //       pack: "material",
-  //       component: PosHesaplari,
-  //     },
-  //     {
-  //       title: KREDILER,
-  //       route: KREDILER,
-  //       icon: "cash-100",
-  //       pack: "material",
-  //       component: Krediler,
-  //     },
-  //     {
-  //       title: KREDIKARTLARI,
-  //       route: KREDIKARTLARI,
-  //       icon: "credit-card-multiple-outline",
-  //       pack: "material",
-  //       component: KrediKartlari,
-  //     },
-  //   ],
-  // },
-  // {
-  //   title: CARIHESAPLAR,
-  //   route: CARIHESAPLAR,
-  //   icon: "account-cash-outline",
-  //   pack: "material",
-  //   component: CariHesaplar,
-  // },
     {
     title: CATEGORY,
     route: CATEGORY,
@@ -85,16 +33,7 @@ Menus = [
     component: Profil,
   },
 ];
-Menus.forEach((item) => {
-  if (item.children) {
-    item.children.unshift({
-      title: Routes.GERIDON,
-      goBack: "true",
-      icon: "arrow-left-bold-circle-outline",
-      pack: "ion",
-    });
-  }
-});
+
 export const otherMenu = [
   {
     title: SUBCATEGORY,
